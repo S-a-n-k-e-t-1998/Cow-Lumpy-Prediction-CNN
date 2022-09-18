@@ -1,5 +1,10 @@
 # Cow-Lumpy-Prediction-CNN
 Lumpy skin disease is caused by a virus in the family Poxviridae, genus Capripoxvirus which affects cattle.The disease is characterized by the eruption of nodules in the skin, which may cover the whole of the animal's body.
+
+
+## Model Prediction
+![Untitled](https://user-images.githubusercontent.com/97348007/190904331-fbf1b437-5bee-4c3b-9006-a8e735484d12.png)
+
 ### Lumpy skin disease Cow      
 ![image](https://user-images.githubusercontent.com/97348007/190903811-2a11234e-7c0a-4989-bee7-35ae289dc5a7.png)
 
