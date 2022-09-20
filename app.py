@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import tensorflow as tf
 from tensorflow import keras
 from PIL import Image
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 # from tensorflow.keras import layers
 import numpy as np
 
@@ -71,7 +71,6 @@ def displayImage():
     img_file_path = session.get('uploaded_img_file_path', None)
     # print(img_file_path)
     im=Image.open(img_file_path)
-    # plt.imshow(im)
     resize_and_rescale = tf.keras.Sequential([
     keras.layers.experimental.preprocessing.Resizing(256, 256),
     keras.layers.experimental.preprocessing.Rescaling(1./255),
