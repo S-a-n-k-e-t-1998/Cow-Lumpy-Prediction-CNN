@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cow Lumpy Disease Detection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      line-height: 150%;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: #e9e9e9;
+    }
+
+    .header h1 {
+      text-shadow: 1px 1px #FF0000;
+      color: #222222;
+      font-size: 30px;
+      font-family: 'Times New Roman', cursive;
+    }
+
+    .header .social a {
+      padding: 0 5px;
+      color: #222222;
+    }
+
+    .left {
+      float: left;
+      width: 180px;
+      margin: 0;
+      padding: 1em;
+    }
+
+    .content {
+      margin-left: 190px;
+      border-left: 1px solid #d4d4d4;
+      padding: 1em;
+      overflow: hidden;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    li a {
+      display: block;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    li a.active {
+      background-color: #84e4e2;
+      color: white;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #29292a;
+      color: white;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 30px 0;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(1) {
+      background-color: #84e4e2;
+      color: white;
+    }
+
+    tr td i.fas {
+      display: block;
+      font-size: 35px;
+      text-align: center;
+    }
+
+    .footer {
+      padding: 55px 20px;
+      background-color: #2e3550;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header" style="background-color:Violet;background-image: url('data:image/jpeg;base64,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')">
+      <h1 style="font-size:3vw;">Cow Lumpy Disease Detection</h1>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </header>
+    <aside class="left">
+      <img src="./assets/html/12.jpg" width="160px" />
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="https://www.jansatta.com/health-news-hindi/lumpy-skin-disease-is-there-any-effect-of-lumpy-virus-in-cows-milk-know-from-expert/2384266/">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <br><br>
+      <p>"Physical fitness is the first requisite of happiness."<br>- Mr Sanket</p>
+    </aside>
+    <main class="content">
+      <h2>About Lumpy Disease</h2>
+      <p>Lumpy skin disease is caused by a virus in the family Poxviridae, genus Capripoxvirus which affects cattle.The disease is characterized by the eruption of nodules in the skin, which may cover the whole of the animal's body.</p>
+      <h2>My Career</h2>
+      <p>I work as a web developer for a company that makes websites for camel businesses.</p>
+      <hr><br>
+      <h2>How Can I Help You?</h2>
+      <table>
+        <tr>
+          <th>Symptoms  1</th>
+          <th>Symptoms  2</th>
+          <th>Symptoms  3</th>
+        </tr>
+        <tr>
+          <td><i class="fas fa-broom"></i></td>
+          <td><i class="fas fa-archive"></i></td>
+          <td><i class="fas fa-trailer"></i></td>
+        </tr>
+        <tr>
+          
+          <th><font color='red'>Swelling </font></th>
+          <th><font color='red'>full of pus</font></th>
+          <th><font color='red'>honeycombed</font></th> 
+        </tr>
+        <tr>
+      </table>
+      <form method="post" enctype="multipart/form-data" action="/">
+        <label for="img">Select image:</label>
+        <input type="file" id="myFile" name="uploaded-file" accept=".jpg">
+        <input type="submit" value="Submit" /><br>
+      </form>
+    </main>
+    <footer class="footer">&copy; Copyright Mr. Sanket</footer>
+  </div>
+</body>
+
+</html>
