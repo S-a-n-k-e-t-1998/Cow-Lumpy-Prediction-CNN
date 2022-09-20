@@ -83,8 +83,6 @@ def displayImage():
     # os.remove(img_file_path)
     # Display image in Flask application web page
     return render_template('index3.html', user_image = img_file_path,pred='Cow detected are {} with confidence {}%'.format(pred,conf))
-
-
  
 if __name__=='__main__':
     app.run(debug = True)
