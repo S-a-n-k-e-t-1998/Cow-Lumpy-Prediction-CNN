@@ -3,4 +3,4 @@ flask
 pandas 
 numpy
 gunicorn
-PIL
+Pillow
